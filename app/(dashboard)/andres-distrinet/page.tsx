@@ -1,6 +1,6 @@
 'use client';
 import axios, { AxiosError } from 'axios';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import FormError from '~/app/components/form-error';
@@ -61,7 +61,11 @@ function DistrinetPage() {
   const [searchedEmail, setSearchedEmail] = React.useState('');
   const [isRequesting, setIsRequesting] = React.useState(false);
   const [attemptCount, setAttemptCount] = React.useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 640);
+  }, []);
   const onSubmit = async (data: FormData) => {
     setErrorCode(null);
     setShowCodeCard(null);
@@ -177,8 +181,8 @@ function DistrinetPage() {
         <ShineBorder
           className="text-center capitalize bg-muted max-w-[90vw] lg:max-w-[1600px] min-w-[85%] min-h-[500px] lg:p-12 p-3"
           color={['#6022ff', '#f21a42', '#8cff00']}
-          borderWidth={window.innerWidth < 640 ? 12 : 53}
-          borderRadius={window.innerWidth < 640 ? 25 : 40}
+          borderWidth={isMobile ? 12 : 53}
+          borderRadius={isMobile ? 25 : 40}
         >
           <div className="relative rounded-2xl mx-auto justify-center flex flex-col items-center overflow-hidden p-8 border bg-background w-full">
             <form
