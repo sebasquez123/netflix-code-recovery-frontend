@@ -233,6 +233,7 @@ function DistrinetPage() {
             {!isRequesting &&
               !showRecoveryCard?.recoveryLink &&
               !showCodeCard?.signInCode &&
+              !showTemporalSigninCard?.temporalSignInLink &&
               !errorCode && (
                 <div className="mt-8 w-[90%] relative z-10 flex flex-col items-center gap-6 p-8 bg-muted/50 rounded-lg border-2 border-dashed border-primary/30">
                   <div className="text-primary animate-pulse">
